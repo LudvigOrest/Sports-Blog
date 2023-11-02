@@ -1,0 +1,7 @@
+#header {
+    display: grid;
+    grid-template-rows: 25% 25% 25% 25%;
+    grid-template-columns: 25% 25% 25% 25%;
+    background-color: antiquewhite;
+    height: 100px;
+}

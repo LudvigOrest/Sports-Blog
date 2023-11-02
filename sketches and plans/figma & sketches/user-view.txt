@@ -1,0 +1,14 @@
+User-view:
+
+- Create posts as current user
+- Comment on posts
+- Like/Dislike posts
+- Save posts
+
+
+Profile view:
+
+- View users own posts
+- Show saved posts
+- Show current user email and username (editable)
+- Create posts as current user

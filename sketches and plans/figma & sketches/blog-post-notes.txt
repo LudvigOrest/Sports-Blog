@@ -1,0 +1,7 @@
+Blog posts:
+
+(When viewing already created blog posts)
+- Like/Dislike
+- Save (Favorite) a post
+- Comment
+- Like/Dislike a comment

@@ -1,0 +1,12 @@
+Admin-view:
+
+- Remove other peoples posts and comments
+- Create posts as "Redaktionen"
+- Edit homepage-content (?)
+
+
+Admin profile-view:
+- Send mail to all users
+- View all users
+- Remove user
+- Create posts as "Redaktionen"
