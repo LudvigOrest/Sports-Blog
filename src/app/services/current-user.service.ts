@@ -9,6 +9,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CurrentUserService {
-
+  type: string = "guest";
   constructor() { }
 }

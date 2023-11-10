@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Blogpost } from 'src/models/blogpost';
+import { User } from 'src/models/user';
 
 @Component({
   selector: 'app-header',

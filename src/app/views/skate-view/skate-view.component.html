@@ -1,0 +1,9 @@
+<p>skate-view works!</p>
+<button (click)="test()">TEST</button>
+<!--Display all blog-posts and make the "cards" clickable, redirect user to the post where they can ineract with it-->
+<div *ngFor="let post of posts">
+    {{post.header}}
+    {{post.thumbnail}}
+    {{post.tags}}
+    {{post.text}}
+</div>
