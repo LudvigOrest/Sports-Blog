@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from 'src/models/user';
 
 /**
  * This service should keep track if the user is "Guest" || "*username*" || "Admin"
@@ -9,6 +10,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CurrentUserService {
-  type: string = "guest";
+  
+  currentUser: User = new User("guest", "", false);
   constructor() { }
 }

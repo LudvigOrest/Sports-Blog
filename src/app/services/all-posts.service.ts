@@ -14,7 +14,13 @@ export class AllPostsService {
 
   constructor() {
     this.allPosts.push(new Blogpost("headerTest", this.placeholderUrl, this.testUser, ["tags", "tag2"], "blabla"));
-    this.allPosts.push(new Blogpost("headerTest2", this.placeholderUrl, this.testUser, ["tags2", "tag3"], "blabla2"));
+    this.allPosts.push(new Blogpost("headerTest2", this.placeholderUrl, this.testUser, ["tags2", "tag3"], "Lorem ipsum alor doler meler set, comovar pisces las detto los sientos." 
+    + "Tape alfa desto sengo cruz. Var pisces las detto los sientos. "
+    + "comovar pisces las detto los..."));
+
+    for (let i = 0; i < this.allPosts.length; i++) {
+      this.allPosts[i].id = i;
+    }
     console.log(this.allPosts);
   }
 }

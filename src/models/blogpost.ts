@@ -29,7 +29,7 @@ export class Blogpost {
 
     //like-dislike functions should only work when user is logged in (check in service what user-type i.e guest or logged in)
     like(currentUser: CurrentUserService): void {
-        if (currentUser.type != "guest" ) {
+        if (currentUser.currentUser.username != "guest" ) {
             console.log("liked post");
             //this.open.likes ++;
         } else { 
@@ -38,7 +38,7 @@ export class Blogpost {
     }
 
     dislike(currentUser: CurrentUserService) : void {
-        if (currentUser.type != "guest") {
+        if (currentUser.currentUser.username != "guest") {
             console.log("disliked post");
             //this.likes --
         } else {

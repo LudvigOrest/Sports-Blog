@@ -6,10 +6,11 @@
     </div>
     <div id="log-in">
         <!--Modal with log-in form-->
-        <button>Log in component</button>
+        <button (click)="login()">Log in component</button>
     </div>
-    <div id="create-post">
+    <div *ngIf="this.using.username != 'guest';" id="create-post">
         <!--Modal to create post-->
+        {{using.username}}
         <button>+post</button>
     </div>
     <div>
