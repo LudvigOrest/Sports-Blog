@@ -10,7 +10,6 @@ import { User } from 'src/models/user';
   providedIn: 'root'
 })
 export class CurrentUserService {
-  
   currentUser: User = new User("guest", "", false);
   constructor() { }
 }

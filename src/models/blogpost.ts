@@ -7,6 +7,7 @@ export class Blogpost {
     id: number = 0;
     header: string;
     thumbnail: string;
+    category: string;
     creator: User;
     tags: string[];
     date: string = "todays date"
@@ -18,9 +19,10 @@ export class Blogpost {
         // comments: Comment[] = [];
     }
 
-    constructor(header: string, thumbnail: string, creator: User, tags: string[], text: string) {
+    constructor(header: string, thumbnail: string, category: string, creator: User, tags: string[], text: string) {
         this.header = header;
         this.thumbnail = thumbnail;
+        this.category = category;
         this.creator = creator;
         this.tags = tags;
         this.text = text;

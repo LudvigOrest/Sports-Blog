@@ -1,7 +1,15 @@
 #header {
+    position:fixed;
     display: grid;
     grid-template-rows: 25% 25% 25% 25%;
     grid-template-columns: 25% 25% 25% 25%;
     background-color: antiquewhite;
     height: 100px;
+    width: 100%;
+    top: 0px;   
+    left: 0px;
+}
+
+#margin {
+    margin-bottom: 100px;
 }

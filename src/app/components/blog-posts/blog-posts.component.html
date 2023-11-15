@@ -1,0 +1,17 @@
+<!--Re-usable component, get the _post array from Input at the different views (filtered on category i.e)-->
+<h1 id="header">{{_posts[0].category}}</h1>
+<!--Display all blog-posts and make the "cards" clickable, redirect user to the post where they can ineract with it-->
+<div id="blog-container">
+    <div class="blog-post-card" *ngFor="let post of _posts">
+        <img class="thumbnail" src={{post.thumbnail}}>
+        <p class="date">{{post.date}}</p>
+        <p class="tags">{{post.tags}}</p>
+        <h2 class="post-header">{{post.header}}</h2>
+        <!--Use slice to cut the post text and add '...' to limit the length of the string-->
+        <p class="post-text"> {{post.text | slice:0:180}}{{post.text.length > 180 ? '...' : ''}}</p>
+        <div class="user">
+            {{post.id}}
+            {{post.creator.username}}
+        </div>
+    </div>
+</div>

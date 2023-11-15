@@ -13,9 +13,10 @@ import { AllPostsService } from 'src/app/services/all-posts.service';
 export class SkateViewComponent {
   constructor(private postService: AllPostsService) {}
 
-  posts = this.postService.allPosts;
+  skatePosts: Blogpost[] = this.postService.allPosts.filter((post) => { return post.category === "skateboard" });
+  posts = this.skatePosts;
 
   test(): void {
-    console.log(this.postService.allPosts);
+    console.log(this.posts);
   }
 }
