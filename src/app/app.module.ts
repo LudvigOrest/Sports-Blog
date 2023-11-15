@@ -10,6 +10,7 @@ import { SnowViewComponent } from './views/snow-view/snow-view.component';
 import { HomeViewComponent } from './views/home-view/home-view.component';
 import { PostViewComponent } from './views/post-view/post-view.component';
 import { OtherViewComponent } from './views/other-view/other-view.component';
+import { CreatePostModalComponent } from './components/create-post-modal/create-post-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OtherViewComponent } from './views/other-view/other-view.component';
     SnowViewComponent,
     HomeViewComponent,
     PostViewComponent,
-    OtherViewComponent
+    OtherViewComponent,
+    CreatePostModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,10 @@
-<p>post-view works!</p>
+<p>{{this.id}}</p>
+<h1>{{post.header}}</h1>
+<h2>{{post.creator.username}}</h2>
+<p>{{post.date}}</p>
+<p>{{post.tags}}</p>
+<img id="thumbnail" src="{{post.thumbnail}}">
+<p>{{post.text}}</p>
+<p>likes: {{post.open.likes}} dislikes: {{post.open.dislikes}}</p>
+<!--Create ngFor loop to render comments maybe? -->
+<p>comments: {{post.open.comments}}</p>

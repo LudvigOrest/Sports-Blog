@@ -1,3 +1,6 @@
+<div *ngIf="this.showAddPostModal === true">
+    <app-create-post-modal></app-create-post-modal>
+</div>
 <div id="header">
     <div id="header-logo">logo</div>
     <div id="navbar">
@@ -14,7 +17,7 @@
     <div *ngIf="this.using.username != 'guest';" id="create-post">
         <!--Modal to create post-->
         {{using.username}}
-        <button>+post</button>
+        <button (click)="createPost()">+post</button>
     </div>
     <div>
         <!--Service-->

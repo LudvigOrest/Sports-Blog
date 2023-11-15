@@ -2,3 +2,7 @@
 body {
     font-family: 'Kanit', sans-serif;
 }
+
+.no-overflow {
+    overflow: hidden;
+}

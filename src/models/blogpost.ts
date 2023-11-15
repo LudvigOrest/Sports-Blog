@@ -16,7 +16,7 @@ export class Blogpost {
     open: {
         likes: number;
         dislikes: number;
-        // comments: Comment[] = [];
+        comments: Comment[];
     }
 
     constructor(header: string, thumbnail: string, category: string, creator: User, tags: string[], text: string) {
@@ -26,7 +26,7 @@ export class Blogpost {
         this.creator = creator;
         this.tags = tags;
         this.text = text;
-        this.open = {likes : 0, dislikes : 0}
+        this.open = {likes : 0, dislikes : 0, comments: []}
     }
 
     //like-dislike functions should only work when user is logged in (check in service what user-type i.e guest or logged in)

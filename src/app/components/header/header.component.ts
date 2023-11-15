@@ -10,12 +10,17 @@ import { CurrentUserService } from 'src/app/services/current-user.service';
 })
 export class HeaderComponent {
   constructor(private userService: CurrentUserService) {}
-
+  
   using: User = this.userService.currentUser;
+  showAddPostModal: boolean = false;
 
   login(): void {
     this.userService.currentUser = new User("Bobäger", "Hejsan12", false);
     console.log("logged in as: " + this.userService.currentUser.username);
     this.using = this.userService.currentUser;
+  }
+
+  createPost(): void {
+    this.showAddPostModal = true;
   }
 }

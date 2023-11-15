@@ -11,6 +11,7 @@ import { AllPostsService } from 'src/app/services/all-posts.service';
 export class SnowViewComponent {
   constructor(private postService: AllPostsService) {}
 
-  snowPosts: Blogpost[] = this.postService.allPosts.filter((post) => { return post.category === "snow" });
-  posts = this.snowPosts;
+  get snowPosts(): Blogpost[] {
+    return this.postService.allPosts.filter((post) => { return post.category === "snow" });
+  } 
 }

@@ -1,0 +1,25 @@
+<div id="create-post-modal">
+    <div id="modal">
+        <!--Output the stäng-button to close modal-->
+        <button>stäng</button>
+        <h1>Skapa ett inlägg: </h1>
+        <p>Inloggad som: {{user.username}}</p>
+        <h3>Rubrik: </h3>
+        <select *ngIf="user.admin === true" name="feature">
+            <option value="" disabled selected hidden>Featured på home-page?</option>
+            <option value="feature">Visa på home-page</option>
+            <option value="don't feature">Visas ej på homepage</option>
+        </select>
+        <input type="text" placeholder="Rubrik..." #header>
+        <select name="kategori" #category>
+            <option value="" disabled selected hidden>Välj kategori...</option>
+            <option value="skateboard">Skateboard</option>
+            <option value="snow">Snowboard</option>
+            <option value="other">Annat</option>
+        </select>
+        <input type="text" placeholder="Taggar... (seperara med kommetecken ',')" #tags>
+        <input type="text" placeholder="Skriv ditt blogginlägg här..." #text>
+        <input type="text" placeholder="Bild-url..." #imgUrl>
+        <button (click)="createPost(header.value, imgUrl.value, category.value, tags.value, text.value)">Skapa blogg-inlägg</button>
+    </div>
+</div>
