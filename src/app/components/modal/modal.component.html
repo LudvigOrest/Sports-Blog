@@ -1,11 +1,11 @@
 <div id="create-post-modal">
     <div id="modal">
         <!--Output the stäng-button to close modal-->
-        <button (click)="closeModal()">stäng</button>
+        <button>stäng</button>
         <h1>Skapa ett inlägg: </h1>
-        <p>Inloggad som: {{user.username}}</p>
+        <p>Inloggad som: </p>
         <h3>Rubrik: </h3>
-        <select *ngIf="user.admin === true" name="feature">
+        <select name="feature">
             <option value="" disabled selected hidden>Featured på home-page?</option>
             <option value="feature">Visa på home-page</option>
             <option value="don't feature">Visas ej på homepage</option>
@@ -20,6 +20,6 @@
         <input type="text" placeholder="Taggar... (seperara med kommetecken ',')" #tags>
         <input type="text" placeholder="Skriv ditt blogginlägg här..." #text>
         <input type="text" placeholder="Bild-url..." #imgUrl>
-        <button (click)="createPost(header.value, imgUrl.value, category.value, tags.value, text.value)">Skapa blogg-inlägg</button>
+        <button>Skapa blogg-inlägg</button>
     </div>
 </div>

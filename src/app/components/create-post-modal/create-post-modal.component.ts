@@ -3,6 +3,7 @@ import { CurrentUserService } from 'src/app/services/current-user.service';
 import { AllPostsService } from 'src/app/services/all-posts.service';
 import { User } from 'src/models/user';
 import { Blogpost } from 'src/models/blogpost';
+import { ModalsService } from 'src/app/services/modals.service';
 
 @Component({
   selector: 'app-create-post-modal',
@@ -12,10 +13,14 @@ import { Blogpost } from 'src/models/blogpost';
 export class CreatePostModalComponent {
   constructor(
     private userService: CurrentUserService,
-    private postService: AllPostsService
+    private postService: AllPostsService,
+    private modalsService: ModalsService
     ) {}
 
   user: User = this.userService.currentUser;
+  get showAddPostModal(): boolean {
+    return this.modalsService.addPostModal;
+  }
 
   createPost(header: string, thumbnail: string, category: string, tags: string, text: string): void {
     console.log("post created");
@@ -27,5 +32,9 @@ export class CreatePostModalComponent {
     } else {
       alert("Du är ej inloggad")
     }
+  }
+
+  closeModal (): void {
+    this.modalsService.addPostModal = false;
   }
 }
