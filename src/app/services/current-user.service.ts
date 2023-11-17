@@ -10,10 +10,22 @@ import { User } from 'src/models/user';
   providedIn: 'root'
 })
 export class CurrentUserService {
-  currentUser: User = new User("guest", "", false);
-  constructor() { }
+  constructor() {
+  }
+
+  admin: User = new User("admin", "admin", true);
+  guest: User = new User("guest", "", false);
+  currentUser: User = this.guest; //Automatically log in as guest
+
+  allUsers: User[] = [this.admin, this.guest];
 
   login(user: User) {
-    this.currentUser = user;
+    if(this.allUsers.includes(user)) {
+      console.log("korrekt användarnamn")
+      this.currentUser = user;
+    } else {
+      console.log("fel inlogg");
+    }
+    
   }
 }

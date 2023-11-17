@@ -26,9 +26,6 @@ export class HeaderComponent {
   }
 
   login(): void {
-    let user: User = new User("Bobäger", "Hejsan12", false);
-    console.log("logged in as: " + this.userService.currentUser.username);
-    this.userService.login(user);
     this.modalsService.logInModal = true;
   }
 

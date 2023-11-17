@@ -1,1 +1,15 @@
-<app-modal (newEvent)="closeModal()"></app-modal>
+<div id="create-post-modal">
+    <div id="modal">
+        <button (click)="closeModal()">stäng</button>
+        <h1>Logga in</h1>
+        <input type="text" placeholder="Användarnamn..." #username>
+        <input type="text" placeholder="Lösenord..." #password>
+        <button (click)="login(username.value, password.value)">Logga in</button>
+        <h1>Eller registrera en ny användare</h1>
+        <input type="text" placeholder="Användarnamn..." #regUsername>
+        <input type="text" placeholder="Email-adress..." #regEmail>
+        <input type="text" placeholder="Lösenord..." #regPassword>
+        <button (click)="register()">Registrera</button>
+    </div>
+</div>
+
