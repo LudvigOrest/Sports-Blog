@@ -13,7 +13,6 @@ export class AllPostsService {
 
   //Refer to allPosts in the vies/components and filter from category. New posts should be added to this array as well
   allPosts: Blogpost[] = [];
-
   //postsUpdated: EventEmitter<BlogPostsComponent> = new EventEmitter();
   
   constructor() {

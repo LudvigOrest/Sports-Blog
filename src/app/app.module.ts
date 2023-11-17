@@ -11,6 +11,8 @@ import { HomeViewComponent } from './views/home-view/home-view.component';
 import { PostViewComponent } from './views/post-view/post-view.component';
 import { OtherViewComponent } from './views/other-view/other-view.component';
 import { CreatePostModalComponent } from './components/create-post-modal/create-post-modal.component';
+import { LoginModalComponent } from './components/login-modal/login-modal.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { CreatePostModalComponent } from './components/create-post-modal/create-
     HomeViewComponent,
     PostViewComponent,
     OtherViewComponent,
-    CreatePostModalComponent
+    CreatePostModalComponent,
+    LoginModalComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

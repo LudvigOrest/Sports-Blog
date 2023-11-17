@@ -12,4 +12,8 @@ import { User } from 'src/models/user';
 export class CurrentUserService {
   currentUser: User = new User("guest", "", false);
   constructor() { }
+
+  login(user: User) {
+    this.currentUser = user;
+  }
 }
