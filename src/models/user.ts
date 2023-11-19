@@ -7,6 +7,8 @@ export class User {
     createdPosts: Blogpost[] = [];
     favoritePosts: Blogpost[] = [];
     admin: boolean;
+    likedPosts: number[] = [];
+    dislikedPosts: number[] = [];
 
     constructor(username: string, password: string, admin: boolean) {
         this.username = username;

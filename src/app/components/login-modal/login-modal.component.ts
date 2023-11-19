@@ -3,7 +3,6 @@ import { ModalsService } from 'src/app/services/modals.service';
 import { CurrentUserService } from 'src/app/services/current-user.service';
 import { AllPostsService } from 'src/app/services/all-posts.service';
 import { User } from 'src/models/user';
-//TODO: Log in doesn't work for some reason...
 
 @Component({
   selector: 'app-login-modal',
@@ -36,12 +35,30 @@ export class LoginModalComponent {
       this.user = new User(username, password, true);
     }
 
-    if (this.allUsers.includes(this.user)) {
-      this.userService.currentUser = this.user;
-    }
+    for (let i = 0; i < this.userService.allUsers.length; i++) {
+      if (this.userService.allUsers[i].username === username) {
+        if (this.userService.allUsers[i].password === password) {
+          this.userService.currentUser = this.user;
+          console.log("nu loggade du in");
+        }
+      }
+    } 
   }
 
-  register() {
-    console.log("works")
+  register(username: string, password: string) {
+    let regUser = new User(username, password, false);
+    let occupied: boolean = false;
+    for (let i = 0; i < this.userService.allUsers.length; i++) {
+      if (this.userService.allUsers[i].username === username) {
+        alert("Användarnamn upptaget");
+        occupied = true;
+        return;
+      }
+    }
+
+    if (occupied === false) {
+      this.userService.allUsers.push(regUser);
+      this.userService.currentUser = regUser;
+    }
   }
 }

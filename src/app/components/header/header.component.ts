@@ -15,8 +15,8 @@ export class HeaderComponent {
     private modalsService: ModalsService
     ) {}
   
-  get using(): User {
-    return this.userService.currentUser;
+  get using(): string {
+    return this.userService.currentUser.username;
   }
   get showAddPostModal(): boolean {
     return this.modalsService.addPostModal;

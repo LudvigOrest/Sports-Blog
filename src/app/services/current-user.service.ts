@@ -15,7 +15,7 @@ export class CurrentUserService {
 
   admin: User = new User("admin", "admin", true);
   guest: User = new User("guest", "", false);
-  currentUser: User = this.guest; //Automatically log in as guest
+  currentUser: User = this.admin; //Automatically log in as guest
 
   allUsers: User[] = [this.admin, this.guest];
 

@@ -17,9 +17,9 @@
         <!--Modal with log-in form-->
         <button (click)="login()">Log in component</button>
     </div>
-    <div *ngIf="this.using.username != 'guest';" id="create-post">
+    <div *ngIf="this.using != 'guest';" id="create-post">
         <!--Modal to create post-->
-        {{using.username}}
+        {{using}}
         <button (click)="openModal()">+post</button>
     </div>
     <div>

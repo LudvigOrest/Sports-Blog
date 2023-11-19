@@ -9,7 +9,7 @@
         <input type="text" placeholder="Användarnamn..." #regUsername>
         <input type="text" placeholder="Email-adress..." #regEmail>
         <input type="text" placeholder="Lösenord..." #regPassword>
-        <button (click)="register()">Registrera</button>
+        <button (click)="register(regUsername.value, regPassword.value)">Registrera</button>
     </div>
 </div>
 

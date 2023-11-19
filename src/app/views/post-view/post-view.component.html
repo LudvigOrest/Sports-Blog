@@ -5,6 +5,22 @@
 <p>{{post.tags}}</p>
 <img id="thumbnail" src="{{post.thumbnail}}">
 <p>{{post.text}}</p>
-<p>likes: {{post.open.likes}} dislikes: {{post.open.dislikes}}</p>
-<!--Create ngFor loop to render comments maybe? -->
-<p>comments: {{post.open.comments}}</p>
+<div class="ineractables" *ngIf="this.user.username != 'guest'">
+    <button [disabled]="disliked" (click)="like()">Gilla</button>
+    <button [disabled]="liked" (click)="dislike()">Ogilla</button>
+</div>
+<p>Gillningar: {{post.open.likes}} Disslajks: {{post.open.dislikes}}</p>
+<p>Kommentarer:</p>
+<div class="ineractables" *ngIf="this.user.username != 'guest'">
+    <input type="text" placeholder="Skriv kommentar..." #newComment>
+    <button (click)="comment(newComment.value)">Publicera kommentar</button>
+</div>
+<div id="comments" *ngFor="let comment of post.open.comments; index as i">
+    <p>{{comment.text}}</p>
+    <p>{{comment.user.username}}</p>
+    <p>{{comment.open.likes}}</p>
+    <div class="ineractables" *ngIf="this.user.username != 'guest'">
+        <button *ngIf="commentLiked[i] === false || commentLiked[i] == null" (click)="likeComment(i)">gilla kommentar</button>
+        <button *ngIf="commentLiked[i]" (click)="unLikeComment(i)">gilla kommentar</button>
+    </div>
+</div>
