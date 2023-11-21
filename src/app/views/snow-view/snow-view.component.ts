@@ -12,6 +12,7 @@ export class SnowViewComponent {
   constructor(private postService: AllPostsService) {}
 
   get snowPosts(): Blogpost[] {
-    return this.postService.allPosts.filter((post) => { return post.category === "snow" });
+    let arr: Blogpost[] = JSON.parse(localStorage.getItem('postsArr') || '');
+    return arr.filter((post) => { return post.category === "snow" });
   } 
 }

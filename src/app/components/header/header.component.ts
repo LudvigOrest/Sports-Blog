@@ -3,6 +3,8 @@ import { Blogpost } from 'src/models/blogpost';
 import { User } from 'src/models/user';
 import { CurrentUserService } from 'src/app/services/current-user.service';
 import { ModalsService } from 'src/app/services/modals.service';
+import { AllPostsService } from 'src/app/services/all-posts.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +14,13 @@ import { ModalsService } from 'src/app/services/modals.service';
 export class HeaderComponent {
   constructor(
     private userService: CurrentUserService,
-    private modalsService: ModalsService
-    ) {}
+    private modalsService: ModalsService,
+    private allPostService: AllPostsService,
+    private storageService: StorageService
+) {}
   
-  get using(): string {
-    return this.userService.currentUser.username;
+  get using(): User {
+    return this.userService.currentUser;
   }
   get showAddPostModal(): boolean {
     return this.modalsService.addPostModal;
@@ -27,9 +31,18 @@ export class HeaderComponent {
 
   login(): void {
     this.modalsService.logInModal = true;
+    this.storageService.setStorage('currentUser', this.using);
   }
 
   openModal(): void {
     this.modalsService.addPostModal = true;
+  }
+
+  clearLocalStorage(): void {
+    this.allPostService.clearLocal();
+  }
+
+  fillLocal() {
+    this.allPostService.fillLocal();
   }
 }

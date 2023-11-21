@@ -6,8 +6,8 @@
 <img id="thumbnail" src="{{post.thumbnail}}">
 <p>{{post.text}}</p>
 <div class="ineractables" *ngIf="this.user.username != 'guest'">
-    <button [disabled]="disliked" (click)="like()">Gilla</button>
-    <button [disabled]="liked" (click)="dislike()">Ogilla</button>
+    <button (click)="like()">Gilla</button>
+    <button (click)="dislike()">Ogilla</button>
 </div>
 <p>Gillningar: {{post.open.likes}} Disslajks: {{post.open.dislikes}}</p>
 <p>Kommentarer:</p>

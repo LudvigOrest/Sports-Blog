@@ -2,6 +2,7 @@ import { Component, ContentChild } from '@angular/core';
 import { ModalsService } from 'src/app/services/modals.service';
 import { CurrentUserService } from 'src/app/services/current-user.service';
 import { AllPostsService } from 'src/app/services/all-posts.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { User } from 'src/models/user';
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginModalComponent {
   constructor(
     private modalsService: ModalsService,
     private userService: CurrentUserService,
-    private postService: AllPostsService
+    private postService: AllPostsService,
+    private storageService: StorageService
     ) {}
 
   user: User = new User("", "", false);
@@ -58,6 +60,7 @@ export class LoginModalComponent {
 
     if (occupied === false) {
       this.userService.allUsers.push(regUser);
+      this.storageService.setStorage('allUsers', this.userService.allUsers);
       this.userService.currentUser = regUser;
     }
   }

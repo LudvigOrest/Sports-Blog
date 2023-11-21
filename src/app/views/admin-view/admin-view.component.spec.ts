@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OtherViewComponent } from './other-view.component';
+import { AdminViewComponent } from './admin-view.component';
 
-describe('OtherViewComponent', () => {
-  let component: OtherViewComponent;
-  let fixture: ComponentFixture<OtherViewComponent>;
+describe('AdminViewComponent', () => {
+  let component: AdminViewComponent;
+  let fixture: ComponentFixture<AdminViewComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [OtherViewComponent]
+      declarations: [AdminViewComponent]
     });
-    fixture = TestBed.createComponent(OtherViewComponent);
+    fixture = TestBed.createComponent(AdminViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

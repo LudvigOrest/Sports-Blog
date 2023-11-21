@@ -9,9 +9,11 @@ import { BlogPostsComponent } from './components/blog-posts/blog-posts.component
 import { SnowViewComponent } from './views/snow-view/snow-view.component';
 import { HomeViewComponent } from './views/home-view/home-view.component';
 import { PostViewComponent } from './views/post-view/post-view.component';
-import { OtherViewComponent } from './views/other-view/other-view.component';
 import { CreatePostModalComponent } from './components/create-post-modal/create-post-modal.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
+import { AboutViewComponent } from './views/about-view/about-view.component';
+import { UserViewComponent } from './views/user-view/user-view.component';
+import { AdminViewComponent } from './views/admin-view/admin-view.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,11 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
     SnowViewComponent,
     HomeViewComponent,
     PostViewComponent,
-    OtherViewComponent,
     CreatePostModalComponent,
     LoginModalComponent,
+    AboutViewComponent,
+    UserViewComponent,
+    AdminViewComponent,
   ],
   imports: [
     BrowserModule,

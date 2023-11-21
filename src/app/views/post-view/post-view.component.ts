@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AllPostsService } from 'src/app/services/all-posts.service';
 import { CurrentUserService } from 'src/app/services/current-user.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { Blogpost } from 'src/models/blogpost';
 import { User } from 'src/models/user';
 import { __values } from 'tslib';
@@ -18,24 +19,66 @@ export class PostViewComponent {
   constructor(
     private postService: AllPostsService,
     private userService: CurrentUserService,
+    private storageService: StorageService,
     public activatedRoute: ActivatedRoute
-    ) {
-      console.log("test")
-      if (this.user.likedPosts.includes(this.id)) {
-        console.log("Already liked this post");
-      }
-      if (this.user.dislikedPosts.includes(this.id)) {
-        console.log("Already disliked this post");
-      }
-    }
+    ) {}
     
     params: any = this.activatedRoute.snapshot.params;
     id: number = this.params.id;
-    liked: boolean = this.checkIfLiked();
-    disliked: boolean = this.checkIfDisliked();
     commentLiked: boolean[] = [];
 
-    checkIfLiked(): boolean {
+    
+
+    get allPosts(): Blogpost[] {
+      return this.storageService.getStorage('postsArr');
+    }
+    get post(): Blogpost {
+      return this.allPosts[this.id];
+    }
+    get postInService(): Blogpost {
+      if (this.allPosts != null) {
+        this.postService.allPosts = this.allPosts;
+      }
+      return this.postService.allPosts[this.id];
+    }
+
+    
+    get user(): User {
+      return this.userService.currentUser;
+    }
+    
+    
+    //Like/Dislike checks if user has liked/disliked the post before, then limits the amounts of likes/dislikes by looking at this.liked/disliked boolean
+    //You can unlike/un-dislike by pressing the button one more time
+    //2nd 3rd if-statement handles if this post has been liked or not before
+    like(): void {
+      this.postInService.open.likes ++;
+      this.storageService.setStorage('postsArr', this.postService.allPosts);
+      let i = this.user.likedPosts.indexOf(this.id);
+      this.user.likedPosts.splice(i, 1);
+    }
+    
+    /**
+     * 
+      if (this.user.likedPosts.includes(this.id)) {
+        this.postInService.open.likes --;
+        let i = this.user.likedPosts.indexOf(this.id);
+        this.user.likedPosts.splice(i, 1);
+        this.liked = false;
+      } else if (this.user.likedPosts.includes(this.id) === false && this.liked === false){
+        this.postInService.open.likes ++;
+        this.user.likedPosts.push(this.id);
+        this.liked = true;
+      } else if (this.user.likedPosts.includes(this.id) === false && this.liked === true) {
+        this.postInService.open.likes --;
+        let i = this.user.likedPosts.indexOf(this.id);
+        this.user.likedPosts.splice(i, 1);
+        this.liked = false;
+      }
+      this.storageService.setStorage('postsArr', this.postService.allPosts);
+
+
+      checkIfLiked(): boolean {
       if (this.user.likedPosts.includes(this.id)) {
         return true;
       } else {
@@ -49,67 +92,27 @@ export class PostViewComponent {
         return false;
       }
     }
-
-    get post(): Blogpost {
-      return this.postService.allPosts[this.id];
-    }
-
-    get user(): User {
-      return this.userService.currentUser
-    }
-
-    
-    //Like/Dislike checks if user has liked/disliked the post before, then limits the amounts of likes/dislikes by looking at this.liked/disliked boolean
-    //You can unlike/un-dislike by pressing the button one more time
-    //2nd 3rd if-statement handles if this post has been liked or not before
-    like(): void {
-      if (this.user.likedPosts.includes(this.id)) {
-        this.post.open.likes --;
-        let i = this.user.likedPosts.indexOf(this.id);
-        this.user.likedPosts.splice(i, 1);
-        this.liked = false;
-      } else if (this.user.likedPosts.includes(this.id) === false && this.liked === false){
-        this.post.open.likes ++;
-        this.user.likedPosts.push(this.id);
-        this.liked = true;
-      } else if (this.user.likedPosts.includes(this.id) === false && this.liked === true) {
-        this.post.open.likes --;
-        let i = this.user.likedPosts.indexOf(this.id);
-        this.user.likedPosts.splice(i, 1);
-        this.liked = false;
-      }
-    }
-    
+     */
 
     dislike(): void {
-      if (this.user.dislikedPosts.includes(this.id)) {
-        this.post.open.dislikes --;
-        let i = this.user.dislikedPosts.indexOf(this.id);
-        this.user.dislikedPosts.splice(i, 1);
-        this.disliked = false;
-      } else if (this.user.dislikedPosts.includes(this.id) === false && this.disliked === false) {
-        this.post.open.dislikes ++;
-        this.user.dislikedPosts.push(this.id);
-        this.disliked = true;
-      } else if (this.user.dislikedPosts.includes(this.id) === false && this.disliked === true) {
-        this.post.open.dislikes --;
-        let i = this.user.dislikedPosts.indexOf(this.id);
-        this.user.dislikedPosts.splice(i, 1);
-        this.disliked = false;
-      }
+      this.postInService.open.dislikes --;
+      this.storageService.setStorage('postsArr', this.postService.allPosts);
     }
 
     comment(comments: string): void {
-      let _comment = new Comment(this.user, comments, (this.post.open.comments.length -1))
-      this.post.open.comments.push(_comment);
+      let _comment = new Comment(this.user, comments, (this.postInService.open.comments.length -1))
+      this.postInService.open.comments.push(_comment);
+      this.storageService.setStorage('postsArr', this.postService.allPosts);
     }
 
     likeComment(index: number) {
-      this.post.open.comments[index].open.likes += 1;
+      this.postInService.open.comments[index].open.likes += 1;
       this.commentLiked[index] = true;
+      this.storageService.setStorage('postsArr', this.postService.allPosts);
     }
     unLikeComment(index:number) {
-      this.post.open.comments[index].open.likes -= 1;
+      this.postInService.open.comments[index].open.likes -= 1;
       this.commentLiked[index] = false;
+      this.storageService.setStorage('postsArr', this.postService.allPosts);
     }
 }

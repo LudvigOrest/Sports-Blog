@@ -11,22 +11,27 @@
         <a routerLink="/home">Hem</a>
         <a routerLink="/">Skateboard</a>
         <a routerLink="/snow">Snowboard</a>
-        <a routerLink="/other">Annat</a>
+        <a routerLink="/about">Om mig</a>
     </div>
     <div id="log-in">
         <!--Modal with log-in form-->
         <button (click)="login()">Log in component</button>
     </div>
-    <div *ngIf="this.using != 'guest';" id="create-post">
+    <div *ngIf="this.using.username != 'guest';" id="create-post">
         <!--Modal to create post-->
-        {{using}}
+        <a [routerLink]="['/acc', using.username]">{{using.username}}</a>
         <button (click)="openModal()">+post</button>
     </div>
     <div>
         <!--Service-->
         <button>Darkmode</button>
     </div>
+    <div *ngIf="using.username != 'guest'">
+        <a routerLink="/admin">Administratörs-vy</a>
+    </div>
 </div>
 <div id="margin"></div>
+<button (click)="clearLocalStorage()">clear localstorage</button>
+<button (click)="fillLocal()">fill localstorage</button>
 <!-- This component should always be visible, however the log-in button will change depending on if the user is logged in or not -->
 <!-- When a navbar link is pressed, it should be bold to let the user know where they are navigated currently -->
