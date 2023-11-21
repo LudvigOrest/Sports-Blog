@@ -4,7 +4,8 @@ liked: <div *ngFor="let likedPost of currentUser.likedPosts; index as i"> {{like
 <!--Display all blog-posts and make the "cards" clickable, redirect user to the post where they can ineract with it-->
 <div id="blog-container">
     <div class="blog-post-card" *ngFor="let post of _posts" [routerLink]="['/post', post.id]">
-        <button *ngIf="currentUser.username != 'guest' " id="like-btn" [routerLink]="" (click)="savePost(post.id)">*</button>
+        <button *ngIf="currentUser.username != 'guest' " id="save-btn" [routerLink]="" (click)="savePost(post.id)">*</button>
+        <button *ngIf="currentUser.username != 'guest' && currentUser.username === post.creator.username" (click)="removePost(post.id)" id="del-button" [routerLink]="">X</button>
         <img class="thumbnail" src={{post.thumbnail}}>
         <p class="date">{{post.date}}</p>
         <p class="tags">{{post.tags}}</p>

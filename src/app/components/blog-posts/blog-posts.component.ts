@@ -32,4 +32,9 @@ export class BlogPostsComponent {
   savePost(id: number): void {
     this.currentUser.savePost(id);
   }
+
+  removePost(id: number): void {
+    this.postService.allPosts.splice(id, 1);
+    this.storageService.setStorage('postsArr', this.postService.allPosts);
+  }
 }
