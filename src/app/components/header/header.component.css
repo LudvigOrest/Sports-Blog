@@ -1,15 +1,129 @@
 #header {
     position:fixed;
-    display: grid;
-    grid-template-rows: 25% 25% 25% 25%;
-    grid-template-columns: 25% 25% 25% 25%;
-    background-color: antiquewhite;
+    display: flex;
+    background-color: rgb(255, 255, 255);
     height: 100px;
     width: 100%;
     top: 0px;   
     left: 0px;
+    outline: 3px solid rgb(95, 95, 95);
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #margin {
-    margin-bottom: 100px;
+    margin-bottom: 110px;
+}
+
+#header-logo {
+    height: 90px;
+    margin-left: 70px;
+}
+
+#user-logo {
+    height: 40px;
+    width: 25px;
+    opacity: 1.2;
+    margin: 0px;
+}
+
+#user-name {
+    text-decoration: none;
+    color: black;
+}
+
+#user-name > a:visited {
+    color: black;
+}
+
+#navbar {
+    font-size: 22px;
+    justify-self: center;
+    align-self: center;
+    margin-left: 200px;
+    width: fit-content;
+}
+
+#navbar > a {
+    text-decoration: none;
+    color: rgb(25, 25, 25);
+}
+
+#navbar > a:visited {
+    color: rgb(29, 29, 29);
+}
+
+#log-in {
+    margin-left: 100px;
+    align-self: center;
+    display: flex;
+    column-gap: 10px;
+}
+
+#log-in-btn {
+    align-self: center;
+    justify-self: center;
+    border: 0px;
+    font-size: 20px;
+    font-family: inherit;
+}
+
+#log-in-item {
+    display: flex;
+    flex-direction: column;
+    column-gap: 0px;
+    row-gap: 0px;
+    align-items: center;
+    margin-right: 30px;
+    
+}
+
+#log-in-item-btns {
+    display: flex;
+    flex-direction: column;
+}
+
+#post-btn {
+    justify-self: center;
+    align-self: center;
+    margin-left: 0px;
+    font-size: 30px;
+    height: 37px;
+    width: 80px;
+    text-align: center;
+    padding: 0px;
+    color: #880015;
+    border-radius: 0px;
+    border: 0px;
+    border-top: 2px solid rgb(184, 184, 184);
+}
+
+#item-2 {
+    justify-self: center;
+    align-self: center;
+}
+
+#day-night-btn > img {
+    height: 40px;
+}
+
+#day-night-btn {
+
+    margin-left: 30px;
+    border-radius: 50px;
+    border: 2px solid rgb(142, 142, 142);
+    padding-right: 7px;
+}
+
+#admin {
+    align-self: center;
+    margin-left: 30px;
+}
+
+#admin-link {
+    background-color: rgb(226, 226, 226);
+    color: #880015;
+    text-decoration: none;
+    padding: 10px;
+    
 }

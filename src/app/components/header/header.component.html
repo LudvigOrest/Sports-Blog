@@ -5,29 +5,36 @@
     <app-login-modal></app-login-modal>
 </div>
 <div id="header">
-    <div id="header-logo">logo</div>
+    <img alt="logo" src="./assets/img/logo.png" id="header-logo">
     <div id="navbar">
         <!--Routing-->
         <a routerLink="/home">Hem</a>
+        |
         <a routerLink="/">Skateboard</a>
+        |
         <a routerLink="/snow">Snowboard</a>
+        |
         <a routerLink="/about">Om mig</a>
     </div>
     <div id="log-in">
         <!--Modal with log-in form-->
-        <button (click)="login()">Log in component</button>
+        <div *ngIf="using.username != 'guest'" id="log-in-item">
+            <img alt="user" src="./assets/img/login.png" id="user-logo">
+            <a id="user-name" [routerLink]="['/acc', using.username]">{{using.username}}</a>
+        </div>
+        <div id="log-in-item-btns">
+            <button id="log-in-btn" (click)="login()">logga in</button>
+            <button *ngIf="this.using.username != 'guest';" id="post-btn" (click)="openModal()">+</button>
+        </div>
     </div>
-    <div *ngIf="this.using.username != 'guest';" id="create-post">
-        <!--Modal to create post-->
-        <a [routerLink]="['/acc', using.username]">{{using.username}}</a>
-        <button (click)="openModal()">+post</button>
-    </div>
-    <div>
+    <div id="item-2">
         <!--Service-->
-        <button>Darkmode</button>
+        <button id="day-night-btn">
+            <img src="./assets/img/day-and-night.png">
+        </button>
     </div>
-    <div *ngIf="using.username != 'guest'">
-        <a routerLink="/admin">Administratörs-vy</a>
+    <div *ngIf="using.username != 'guest'" id="admin">
+        <a routerLink="/admin" id="admin-link">admin-vy</a>
     </div>
 </div>
 <div id="margin"></div>
