@@ -15,13 +15,31 @@ export class AdminViewComponent {
     ) {}
 
   get allPosts(): Blogpost[] {
+    if(localStorage.getItem('postsArr') != null) {
+      this.postService.allPosts = this.storageService.getStorage('postsArr');
+    }
     return this.storageService.getStorage('postsArr');
   }
 
-  removePost(_id: string): void {
-    let id = parseInt(_id);
-    let i = this.postService.allPosts.indexOf(this.postService.allPosts[id])
-    this.postService.allPosts.splice(i, 1);
-    this.storageService.setStorage('postsArr', this.postService.allPosts);
+  removePost(id: number): void {
+    let post: Blogpost;
+    for (let i = 0; i < this.postService.allPosts.length; i++) {
+      if (this.postService.allPosts[i].id === id) {
+        post = this.postService.allPosts[i];
+        this.postService.removePost(post);
+      }
+    }
   }
 }
+/**
+ * let id = parseInt(_id);
+    if(localStorage.getItem('postsArr') == null) {
+      this.postService.fillLocal();
+    } else {
+      this.postService.allPosts = this.storageService.getStorage('postsArr');
+    }
+    let i = this.postService.allPosts.indexOf(this.postService.allPosts[id])
+    this.postService.allPosts.splice((i + 0), 1);
+    this.storageService.setStorage('postsArr', this.postService.allPosts);
+  }
+ **/ 

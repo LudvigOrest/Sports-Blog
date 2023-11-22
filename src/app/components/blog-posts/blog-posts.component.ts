@@ -34,7 +34,12 @@ export class BlogPostsComponent {
   }
 
   removePost(id: number): void {
-    this.postService.allPosts.splice(id, 1);
-    this.storageService.setStorage('postsArr', this.postService.allPosts);
+    let post: Blogpost;
+    for (let i = 0; i < this.postService.allPosts.length; i++) {
+      if (this.postService.allPosts[i].id === id) {
+        post = this.postService.allPosts[i];
+        this.postService.removePost(post);
+      }
+    }
   }
 }

@@ -35,7 +35,7 @@
             <img src="./assets/img/day-and-night.png">
         </button>
     </div>
-    <div *ngIf="using.username != 'guest'" id="admin">
+    <div *ngIf="using.username === 'admin'" id="admin">
         <a routerLink="/admin" id="admin-link">admin-vy</a>
     </div>
 </div>

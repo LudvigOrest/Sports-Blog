@@ -9,7 +9,11 @@ import { StorageService } from './storage.service';
   providedIn: 'root'
 })
 export class AllPostsService {
-  constructor(private storageService: StorageService) {}
+  constructor(private storageService: StorageService) {
+    if(localStorage.getItem('postsArr') == null) {
+      this.fillLocal();
+    }
+  }
   placeholderUrl: string = "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallsdesk.com%2Fwp-content%2Fuploads%2F2017%2F01%2FPictures-of-Skateboarding.jpg&f=1&nofb=1&ipt=392677f657969c327b047f53e6bea054e928eeeb4ec07b85dee6389f68160cf7&ipo=images";
   testUser: User = new User("testnamn", "lösen", false);
 
@@ -34,8 +38,6 @@ export class AllPostsService {
       this.allPosts[i].id = i;
     }
     this.storageService.setStorage('postsArr', this.allPosts);
-    let test = this.storageService.getStorage('postsArr'); //fetch from localstorage (set to ls in row 33)
-    console.log('test: ' + test[0]);
   }
 
   clearLocal(): void {
@@ -48,7 +50,14 @@ export class AllPostsService {
 
   addPost(post: Blogpost): void {
     this.allPosts.push(post);
-    post.id = this.allPosts.length-1;
+    post.id = this.allPosts.length - 1;
     localStorage.setItem('postsArr', JSON.stringify(this.allPosts));
+  }
+
+  removePost(post: Blogpost): void {
+    console.log(post);
+    let i = this.allPosts.indexOf(post);
+    this.allPosts.splice(i, 1);
+    this.storageService.setStorage('postsArr', this.allPosts);
   }
 }

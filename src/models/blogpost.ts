@@ -10,7 +10,7 @@ export class Blogpost {
     category: string;
     creator: User;
     tags: string[];
-    date: string = "todays date"
+    date: string = this.createdDate();
     text: string;
 
     open: {
@@ -46,5 +46,14 @@ export class Blogpost {
         } else {
             console.log("user is not logged in");
         }
+    }
+
+    createdDate(): string {
+        let dateObj = new Date();
+        let month = (dateObj.getUTCMonth() + 1).toString();
+        let day = (dateObj.getUTCDate()).toString();
+        let year = (dateObj.getUTCFullYear()).toString();
+
+        return (year + '-' + month + '-' + day)
     }
 }

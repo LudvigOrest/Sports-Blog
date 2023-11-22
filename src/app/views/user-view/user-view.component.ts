@@ -21,15 +21,18 @@ export class UserViewComponent {
     return this.userService.currentUser;
   }
   get allPosts(): Blogpost[] {
+    if(localStorage.getItem('postsArr') != null) {
+      this.postService.allPosts = this.storageService.getStorage('postsArr');
+    }
     return this.storageService.getStorage('postsArr');
   }
   get savedPosts(): Blogpost[] {
     let savedIndex: number[] = this.userService.currentUser.likedPosts;
-    let arr: Blogpost[] = JSON.parse(localStorage.getItem('postsArr') || '');
+    let arr: Blogpost[] = this.allPosts;
 
     return arr.filter((post, y) => {
       for (let i = 0; i < savedIndex.length; i++) {
-        if (y === savedIndex[i]) {
+        if (this.allPosts[y].id === savedIndex[i]) {
           return post;
         }
       }
