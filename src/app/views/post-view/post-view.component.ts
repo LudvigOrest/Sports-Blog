@@ -95,7 +95,7 @@ export class PostViewComponent {
      */
 
     dislike(): void {
-      this.postInService.open.dislikes --;
+      this.postInService.open.dislikes ++;
       this.storageService.setStorage('postsArr', this.postService.allPosts);
     }
 

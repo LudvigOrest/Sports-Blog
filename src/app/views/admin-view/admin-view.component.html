@@ -1,21 +1,24 @@
-<table>
-    <tr>
-        <th>Blogginlägg </th>
-        <th>Id </th>
-        <th>Skapare </th>
-        <th>Kategori</th>
-        <th>Thumbnail </th>
-        <th>Actions </th>
-    </tr>
-    <tr *ngFor="let post of allPosts">
-        <td>{{post.header}}</td>
-        <td #id>{{post.id}}</td>
-        <td>{{post.creator.username}}</td>
-        <td>{{post.category}}</td>
-        <td><img class="thumbnail" src="{{post.thumbnail}}"></td>
-        <td>
-            <button (click)="removePost(id.innerHTML)">Ta bort inlägg</button>
-        </td>
-    </tr>
 
-</table>
+<div id="container">
+    <table>
+        <tr>
+            <th>Blogginlägg </th>
+            <th>Id </th>
+            <th>Skapare </th>
+            <th>Kategori</th>
+            <th>Thumbnail </th>
+            <th>Actions </th>
+        </tr>
+        <tr *ngFor="let post of allPosts">
+            <td>{{post.header}}</td>
+            <td #id>{{post.id}}</td>
+            <td>{{post.creator.username}}</td>
+            <td>{{post.category}}</td>
+            <td><img class="thumbnail" src="{{post.thumbnail}}"></td>
+            <td>
+                <button (click)="removePost(id.innerHTML)">Ta bort inlägg</button>
+            </td>
+        </tr>
+    
+    </table>
+</div>

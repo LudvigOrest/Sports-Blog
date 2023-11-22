@@ -1,0 +1,66 @@
+h1 {
+    text-align: center;
+    font-size: 35px;
+}
+
+#info-text {
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.redaktion {
+    text-align: center;
+}
+
+#form-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#contact-form {
+    display:flex;
+    flex-direction: column;
+    width: 600px;
+    height: 480px;
+    outline: 2px solid rgb(138, 138, 138);
+    border-radius: 20px;
+    row-gap: 5px;
+}
+
+#contact-form > h3 {
+    text-align: center;
+}
+
+#contact-form > div {
+    margin-left: 25%;
+    display: flex;
+}
+
+#contact-form > button {
+    margin-top: 10px;
+    width: 130px;
+    align-self: center;
+}
+
+.labels {
+    align-self: flex-start;
+    width: 100px;
+    margin-left: 25%;
+}
+
+.inputs {
+    text-align: start;
+    text-wrap: wrap;
+    height: 20px;
+    width: 70%;
+    align-content: start;
+}
+
+#thoughts {
+    height: 200px;
+}
+
+footer {
+    font-size: 12px;
+}

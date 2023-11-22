@@ -1,20 +1,27 @@
 <!--Re-usable component, get the _post array from Input at the different views (filtered on category i.e)-->
 <h1 id="header">{{_header}}</h1>
-liked: <div *ngFor="let likedPost of currentUser.likedPosts; index as i"> {{likedPost}} </div>
+<div id="line-container">
+    <div id="line"></div>
+</div>
 <!--Display all blog-posts and make the "cards" clickable, redirect user to the post where they can ineract with it-->
 <div id="blog-container">
     <div class="blog-post-card" *ngFor="let post of _posts" [routerLink]="['/post', post.id]">
-        <button *ngIf="currentUser.username != 'guest' " id="save-btn" [routerLink]="" (click)="savePost(post.id)">*</button>
-        <button *ngIf="currentUser.username != 'guest' && currentUser.username === post.creator.username" (click)="removePost(post.id)" id="del-button" [routerLink]="">X</button>
+        <button *ngIf="currentUser.username != 'guest' && currentUser.username === post.creator.username" (click)="removePost(post.id)" id="del-btn" [routerLink]="">
+            <img alt="delete-post" src="./assets/img/delete.png">
+        </button>
         <img class="thumbnail" src={{post.thumbnail}}>
+        <button *ngIf="currentUser.username != 'guest' " id="save-btn" [routerLink]="" (click)="savePost(post.id)">
+            <img alt="save-post" src="./assets/img/bookmark.png">
+        </button>
         <p class="date">{{post.date}}</p>
         <p class="tags">{{post.tags}}</p>
         <h2 class="post-header">{{post.header}}</h2>
         <!--Use slice to cut the post text and add '...' to limit the length of the string-->
         <p class="post-text"> {{post.text | slice:0:180}}{{post.text.length > 180 ? '...' : ''}}</p>
-        <div class="user">
-            {{post.id}}
-            {{post.creator.username}}
+        <div id="post-footer">
+            <div class="user">
+                // {{post.creator.username}}
+            </div>
         </div>
     </div>
 </div>

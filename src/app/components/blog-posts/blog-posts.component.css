@@ -1,5 +1,4 @@
 #blog-container {
-    background-color: rgb(255, 175, 175);
     margin: 0px;
     padding: 0px;
     display: flex;
@@ -8,11 +7,32 @@
     width: 100%;
     gap: 3%;
     justify-content: center;
-    row-gap: 15px;
+    row-gap: 25px;
 }
 
 #header {
     cursor: default;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+#line-container {
+    display: flex;
+    height: 50px;
+    margin-top: 0px;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#line {
+    width: 500px;
+    height: 2px;
+    background-color: black;
+
+    align-self: start;
 }
 
 .blog-post-card {
@@ -21,11 +41,81 @@
     flex-direction: column;
     width: 300px;
     max-height: 500px;
-    outline: 1px solid rgb(162, 162, 162);
+    outline: 0px;
     cursor: pointer;
+    padding: 10px;
+    transition: all 0.5s;
+}
+
+.blog-post-card:hover {
+    scale: 1.01;
+    box-shadow: 10px 10px rgb(110, 110, 110);
+    transition: all 0.5s;   
+}
+
+.blog-post-card:active {
+    scale: 0.99;
+    background-color: rgb(229, 229, 229);
+    transition: all 0.5s;
+}
+
+#save-btn {
+    width: 20px;
+    height: 26px;
+    margin-top: 0px;
+    position: relative;
+    top: -7px;
+    left: 6px;
+    outline: 0px;
+    border: 0px;
+    background-color: rgb(241, 241, 241);
+}
+
+#save-btn > img {
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    left: -7px;
+}
+
+#save-btn:hover {
+    background-color: rgb(184, 184, 184);
+}
+
+#save-btn:active {
+    background-color: rgb(143, 210, 131);
+}
+
+#del-btn {
+    width: 23px;
+    height: 23px;
+    margin-top: 0px;
+    position: relative;
+    top: -10px;
+    left: 285px;
+    outline: 0px;
+    border: 0px;
+    background-color: rgb(241, 241, 241);
+}
+
+#del-btn > img {
+    height: 23px;
+    position: relative;
+    right: 4px;
+    top: -1px;
+}
+
+#del-btn:hover {
+    background-color: rgb(184, 184, 184);
+}
+
+#del-btn:active {
+   background-color: #d6112e;
 }
 
 .thumbnail {
+    min-height: 180px;
     max-height: 100%;
     max-width: 100%;
     margin: 8px;
@@ -33,10 +123,10 @@
 }
 
 .date {
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 0px;
     font-size: 18px;
-    color: rgb(221, 44, 44);
+    color: #b4001b;
     font-weight: bold;
     text-align: center;
     height: fit-content;
@@ -45,16 +135,18 @@
 .tags {
     margin: 0px;
     font-size: 18px;
-    color: rgb(135, 135, 135);
-    font-weight: bold;
+    color: rgb(171, 171, 171);
+    font-weight: regular;
+    font-style: italic;
     text-align: center;
     height: fit-content;
 }
 
 .post-header {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 10px;
+    font-size: 30px;
 }
 
 .post-text { 
@@ -62,6 +154,14 @@
     margin-left: 10px;
     margin-right: 0px;
     margin-bottom: 8px;
+    color: rgb(84, 84, 84);
+}
+
+#post-footer {
+    display:flex;
+    height: 100%;
+    align-content: end;
+    justify-content: end;
 }
 
 .user {

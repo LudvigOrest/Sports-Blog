@@ -2,3 +2,31 @@
     height: 50px;
     width: 50px;
 }
+
+table {
+    background-color: rgb(245, 245, 245);
+    width: 60%;
+    align-self: center;
+    padding: 20px;
+    border: 2px solid darkred;
+    border-radius: 20px;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+tr {
+    border: 1px black solid;
+}
+
+td {
+    border: 1px solid black;
+    margin: 1px;
+}
+
+th {
+    
+}

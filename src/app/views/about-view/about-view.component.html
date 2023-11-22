@@ -1,22 +1,49 @@
-<p>about-view works!</p>
-
 <h1>Om brädkultur</h1>
-<p>Lorem ipsum dolor sit amet, 
+<p id="info-text">Lorem ipsum dolor sit amet, 
     consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
     Excepteur sint occaecat cupidatat non proident, 
     sunt in culpa qui officia deserunt mollit anim id est laborum.
 </p>
-<a href="https://www.flaticon.com/free-icons/day-and-night" title="day-and-night icons">Day-and-night icons created by rizal2109 - Flaticon</a>
 
-<form id="contact-form">
-    <h3>Kontakta oss</h3>
-    <input type="text" placeholder="Rubrik..." #formHeader>
+<h1>Vår historia</h1>
+<p id="info-text">Lorem ipsum dolor sit amet, 
+    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+    Excepteur sint occaecat cupidatat non proident, 
+    sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<div id="form-container">
+    <form id="contact-form">
+        <h3>Kontakta oss</h3>
+        <label class="labels">Rubrik: </label>
+        <div>
+            <input class="inputs" type="text" placeholder="Rubrik..." #formHeader>
+        </div>
+        <label class="labels">Dina tankar: </label>
+        <div>
+            <textarea type="text" class="inputs" id="thoughts" placeholder="Innehåll..." required #formText></textarea>
+        </div>
+        <label class="labels">Mailadress: </label>
+        <div>
+            <input type="text" class="inputs" placeholder="exempel@mail.com" required #formMail>
+        </div>
+        <button type="button" (click)="sendForm(formHeader.value, formText.value, formMail.value)">Skicka formulär</button>
+    </form> 
+</div>
+
+<footer>
     <br/>
-    <input type="text" placeholder="Innehåll..." #formText>
     <br/>
-    <input type="text" placeholder="exempel@mail.com" #formMail>
+    <div>Contributions: </div>
+    <a href="https://www.flaticon.com/free-icons/day-and-night" title="day-and-night icons">Day-and-night icons created by rizal2109 - Flaticon</a>
     <br/>
-    <button type="button" (click)="sendForm(formHeader.value, formText.value, formMail.value)">Skicka formulär</button>
-</form>
+    <a href="https://www.flaticon.com/free-icons/save" title="save icons">Save icons created by Yogi Aprelliyanto - Flaticon</a>
+    <br/>
+    <a href="https://www.flaticon.com/free-icons/miscellaneous" title="miscellaneous icons">Miscellaneous icons created by Alfredo Creates - Flaticon</a>
+    <br/>
+    <a href="https://www.flaticon.com/free-icons/like" title="like icons">Like and dislike icons created by logisstudio - Flaticon</a>
+</footer>
