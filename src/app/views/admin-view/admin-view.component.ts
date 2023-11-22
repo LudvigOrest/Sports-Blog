@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { StorageService } from 'src/app/services/storage.service';
 import { AllPostsService } from 'src/app/services/all-posts.service';
-import { Blogpost } from 'src/models/blogpost';
+import { Blogpost } from 'src/modules/blogpost';
 
 @Component({
   selector: 'app-admin-view',
@@ -12,10 +12,10 @@ export class AdminViewComponent {
   constructor(
     private storageService: StorageService,
     private postService: AllPostsService
-    ) {}
+  ) { }
 
   get allPosts(): Blogpost[] {
-    if(localStorage.getItem('postsArr') != null) {
+    if (localStorage.getItem('postsArr') != null) {
       this.postService.allPosts = this.storageService.getStorage('postsArr');
     }
     return this.storageService.getStorage('postsArr');
@@ -31,15 +31,3 @@ export class AdminViewComponent {
     }
   }
 }
-/**
- * let id = parseInt(_id);
-    if(localStorage.getItem('postsArr') == null) {
-      this.postService.fillLocal();
-    } else {
-      this.postService.allPosts = this.storageService.getStorage('postsArr');
-    }
-    let i = this.postService.allPosts.indexOf(this.postService.allPosts[id])
-    this.postService.allPosts.splice((i + 0), 1);
-    this.storageService.setStorage('postsArr', this.postService.allPosts);
-  }
- **/ 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CurrentUserService } from 'src/app/services/current-user.service';
-import { Blogpost } from 'src/models/blogpost';
+import { Blogpost } from 'src/modules/blogpost';
 import { StorageService } from 'src/app/services/storage.service';
 import { AllPostsService } from 'src/app/services/all-posts.service';
 
@@ -15,10 +15,10 @@ export class SkateViewComponent {
   constructor(
     private storageService: StorageService,
     private postService: AllPostsService
-    ) {}
+  ) { }
 
   get allPosts(): Blogpost[] {
-    if(localStorage.getItem('postsArr') != null) {
+    if (localStorage.getItem('postsArr') != null) {
       this.postService.allPosts = this.storageService.getStorage('postsArr');
     }
     return this.storageService.getStorage('postsArr');

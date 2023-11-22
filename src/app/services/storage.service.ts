@@ -10,7 +10,7 @@ export class StorageService {
     localStorage.setItem(key, JSON.stringify(data));
   }
 
-  getStorage(key: string): any {  
+  getStorage(key: string): any {
     return JSON.parse(localStorage.getItem(key) || '');
   }
 

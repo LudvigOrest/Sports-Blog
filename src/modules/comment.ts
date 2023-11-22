@@ -13,6 +13,6 @@ export class Comment {
         this.user = user;
         this.text = text;
         this.id = id;
-        this.open = {likes: 0}
+        this.open = { likes: 0 }
     }
 }

@@ -5,8 +5,9 @@
 </div>
 <!--Display all blog-posts and make the "cards" clickable, redirect user to the post where they can ineract with it-->
 <div id="blog-container">
-    <div class="blog-post-card" *ngFor="let post of _posts; index as i" [routerLink]="['/post', i]">
-        <button *ngIf="currentUser.username != 'guest' && currentUser.username === post.creator.username" (click)="removePost(i)" id="del-btn" [routerLink]="">
+    <div class="blog-post-card" *ngFor="let post of _posts" [routerLink]="['/post', post.id]">
+        <button *ngIf="currentUser.username != 'guest' && currentUser.username === post.creator.username"
+            (click)="removePost(post.id)" id="del-btn" [routerLink]="">
             <img alt="delete-post" src="./assets/img/delete.png">
         </button>
         <img class="thumbnail" src={{post.thumbnail}}>

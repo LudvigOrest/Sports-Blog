@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { CurrentUserService } from 'src/app/services/current-user.service';
 import { AllPostsService } from 'src/app/services/all-posts.service';
-import { User } from 'src/models/user';
-import { Blogpost } from 'src/models/blogpost';
+import { User } from 'src/modules/user';
+import { Blogpost } from 'src/modules/blogpost';
 import { ModalsService } from 'src/app/services/modals.service';
-import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-create-post-modal',
@@ -16,8 +15,7 @@ export class CreatePostModalComponent {
     private userService: CurrentUserService,
     private postService: AllPostsService,
     private modalsService: ModalsService,
-    private storageService: StorageService
-    ) {}
+  ) { }
 
   user: User = this.userService.currentUser;
   get showAddPostModal(): boolean {
@@ -37,7 +35,7 @@ export class CreatePostModalComponent {
     }
   }
 
-  closeModal (): void {
+  closeModal(): void {
     this.modalsService.addPostModal = false;
   }
 }

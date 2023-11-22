@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Blogpost } from 'src/models/blogpost';
-import { User } from 'src/models/user';
+import { Blogpost } from 'src/modules/blogpost';
+import { User } from 'src/modules/user';
 import { CurrentUserService } from 'src/app/services/current-user.service';
 import { ModalsService } from 'src/app/services/modals.service';
 import { AllPostsService } from 'src/app/services/all-posts.service';
@@ -17,8 +17,8 @@ export class HeaderComponent {
     private modalsService: ModalsService,
     private allPostService: AllPostsService,
     private storageService: StorageService
-) {}
-  
+  ) { }
+
   get using(): User {
     return this.userService.currentUser;
   }

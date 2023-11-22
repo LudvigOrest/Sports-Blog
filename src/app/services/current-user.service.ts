@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from 'src/models/user';
+import { User } from 'src/modules/user';
 import { StorageService } from './storage.service';
 
 /**
@@ -14,16 +14,16 @@ export class CurrentUserService {
   constructor(private storageService: StorageService) {
     storageService.setStorage('allUsers', this.allUsers);
     console.log(storageService.getStorage('allUsers'));
-  } 
+  }
 
   admin: User = new User("admin", "admin", true);
   guest: User = new User("guest", "", false);
   currentUser: User = this.admin; //Automatically logs in as ---
-  
+
   allUsers: User[] = this.test();
 
   login(user: User): void {
-    if(this.allUsers.includes(user)) {
+    if (this.allUsers.includes(user)) {
       console.log("korrekt användarnamn")
       this.currentUser = user;
       this.storageService.setStorage('currentUser', this.currentUser)

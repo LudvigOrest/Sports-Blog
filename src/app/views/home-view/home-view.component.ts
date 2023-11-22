@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { StorageService } from 'src/app/services/storage.service';
-import { Blogpost } from 'src/models/blogpost';
+import { Blogpost } from 'src/modules/blogpost';
 import { AllPostsService } from 'src/app/services/all-posts.service';
 
 @Component({
@@ -12,10 +12,10 @@ export class HomeViewComponent {
   constructor(
     private storageService: StorageService,
     private postService: AllPostsService
-    ) {}
+  ) { }
 
-  get allPosts(): Blogpost[]  {
-    if(localStorage.getItem('postsArr') != null) {
+  get allPosts(): Blogpost[] {
+    if (localStorage.getItem('postsArr') != null) {
       this.postService.allPosts = this.storageService.getStorage('postsArr');
     }
     return this.storageService.getStorage('postsArr');

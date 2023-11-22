@@ -1,9 +1,8 @@
-import { Component, ContentChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalsService } from 'src/app/services/modals.service';
 import { CurrentUserService } from 'src/app/services/current-user.service';
-import { AllPostsService } from 'src/app/services/all-posts.service';
 import { StorageService } from 'src/app/services/storage.service';
-import { User } from 'src/models/user';
+import { User } from 'src/modules/user';
 
 @Component({
   selector: 'app-login-modal',
@@ -14,9 +13,8 @@ export class LoginModalComponent {
   constructor(
     private modalsService: ModalsService,
     private userService: CurrentUserService,
-    private postService: AllPostsService,
     private storageService: StorageService
-    ) {}
+  ) { }
 
   user: User = new User("", "", false);
   get allUsers() {
@@ -30,7 +28,7 @@ export class LoginModalComponent {
   login(username: string, password: string) {
     console.log(username);
     console.log(password);
-    
+
     if (username != "admin") {
       this.user = new User(username, password, false);
     } else {
@@ -44,7 +42,7 @@ export class LoginModalComponent {
           console.log("nu loggade du in");
         }
       }
-    } 
+    }
   }
 
   register(username: string, password: string) {

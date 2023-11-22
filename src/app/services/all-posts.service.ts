@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Blogpost } from 'src/models/blogpost';
-import { User } from 'src/models/user';
+import { Blogpost } from 'src/modules/blogpost';
+import { User } from 'src/modules/user';
 import { CurrentUserService } from './current-user.service';
 import { BlogPostsComponent } from '../components/blog-posts/blog-posts.component';
 import { StorageService } from './storage.service';
@@ -12,11 +12,12 @@ export class AllPostsService {
   constructor(
     private storageService: StorageService,
     private userService: CurrentUserService
-    ) {
-    if(localStorage.getItem('postsArr') == null) {
+  ) {
+    if (localStorage.getItem('postsArr') == null) {
       this.fillLocal();
     }
   }
+  
   placeholderUrl: string[] = [
     "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallsdesk.com%2Fwp-content%2Fuploads%2F2017%2F01%2FPictures-of-Skateboarding.jpg&f=1&nofb=1&ipt=392677f657969c327b047f53e6bea054e928eeeb4ec07b85dee6389f68160cf7&ipo=images",
     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F1769553%2Fpexels-photo-1769553.jpeg%3Fcs%3Dsrgb%26dl%3Daction-air-balance-1769553.jpg%26fm%3Djpg&f=1&nofb=1&ipt=40e152001b06d4f3132e3b21b32ff1fb5ffed3f8d10e2f835ab08e5fefe84552&ipo=images",
@@ -31,33 +32,32 @@ export class AllPostsService {
   admin: User = this.userService.admin;
   testUser: User = new User("Bobäger", "bob", false);
 
-  //Refer to allPosts in the views/components and filter from category. New posts should be added to this array as well
   allPosts: Blogpost[] = [];
   viewing: number = 0;
 
   fillLocal(): void {
     this.allPosts.push(new Blogpost("Vert-skejtande", this.placeholderUrl[1], "skateboard", this.admin, ["vert", "tricks"], "Vad tänker du på när du hör vert? 90-gradiga ramper och tape alfa desto sengo cruz. Var pisces las detto los sientos. "));
     this.allPosts.push(new Blogpost("Bobäger's nya video", this.placeholderUrl[0], "skateboard", this.testUser, ["film", "part"], "Bobäger är den bästaste skejtaren jag vet, han äger. Han border bli Sveriges kung och president och stadsminister. När bobäger gör armhävningar så häver han inte upp sig själv, utan han trycker ner jorden. Så stark e han. "));
-    this.allPosts.push(new Blogpost("Howto: Indy", this.placeholderUrl[1], "skateboard", this.testUser, ["grabs", "ramp"], "Hur gör man en indy-grab? Läs inlägget för att lära dig hur man gör det absolut lorem ipsum alor doler meler set, comovar pisces las detto los sientos." 
-    + "Tape alfa desto sengo cruz. Var pisces las detto los sientos. "
-    + "comovar pisces las detto los"));
+    this.allPosts.push(new Blogpost("Howto: Indy", this.placeholderUrl[1], "skateboard", this.testUser, ["grabs", "ramp"], "Hur gör man en indy-grab? Läs inlägget för att lära dig hur man gör det absolut lorem ipsum alor doler meler set, comovar pisces las detto los sientos."
+      + "Tape alfa desto sengo cruz. Var pisces las detto los sientos. "
+      + "comovar pisces las detto los"));
     this.allPosts.push(new Blogpost("Att övervinna rädslan", this.placeholderUrl[2], "skateboard", this.admin, ["mentalitet", "skate"], "När pulsen ökar och man undrar ifall det verkligen lorem ipsum alor doler meler set, comovar pisces las detto los sientos. "));
-    this.allPosts.push(new Blogpost("Vilken bräda?", this.placeholderUrl[3], "skateboard", this.testUser, ["setup", "bräda"], "Vilken bräda som en person har beror på många anledningar och preferenser. Lorem ipsum alor doler meler set, comovar pisces las detto los sientos." 
-    + "Tape alfa desto sengo cruz. Var pisces las detto los sientos. Tape alfa desto sengo cruz. Var pisces las detto los sientos. Tape alfa desto sengo cruz. Var pisces las detto los sientos."
-    + "comovar pisces las detto los"));
+    this.allPosts.push(new Blogpost("Vilken bräda?", this.placeholderUrl[3], "skateboard", this.testUser, ["setup", "bräda"], "Vilken bräda som en person har beror på många anledningar och preferenser. Lorem ipsum alor doler meler set, comovar pisces las detto los sientos."
+      + "Tape alfa desto sengo cruz. Var pisces las detto los sientos. Tape alfa desto sengo cruz. Var pisces las detto los sientos. Tape alfa desto sengo cruz. Var pisces las detto los sientos."
+      + "comovar pisces las detto los"));
     this.allPosts.push(new Blogpost("Bobäger's nya video", this.placeholderUrl[2], "skateboard", this.testUser, ["film", "part"], "Bobäger är den bästaste skejtaren jag vet, han äger. Han border bli Sveriges kung och president och stadsminister. När bobäger gör armhävningar så häver han inte upp sig själv, utan han trycker ner jorden. Så stark e han. "));
-    this.allPosts.push(new Blogpost("Nybörjar-grabs", this.placeholderUrl[5], "snow", this.admin, ["beginner", "grab"], "Lorem ipsum alor doler meler set, comovar pisces las detto los sientos." 
-    + "Tape alfa desto sengo cruz. Var pisces las detto los sientos. "
-    + "comovar pisces las detto los"));
-    this.allPosts.push(new Blogpost("Vintersäsongen", this.placeholderUrl[6], "snow", this.testUser, ["vinter", "väder"], "Nu närmar sig vintersäsongen och jag har upptäckt att lorem ipsum alor doler meler set, comovar pisces las detto los sientos." 
-    + "Tape alfa desto sengo cruz. Var pisces las detto los sientos. "
-    + "comovar pisces las detto los"));
-    this.allPosts.push(new Blogpost("Favorit-resort", this.placeholderUrl[7], "snow", this.testUser, ["disskusion", "resort"], "Dela med dig vilket resort du älskar! Lorem ipsum alor doler meler set, comovar pisces las detto los sientos." 
-    + "Tape alfa desto sengo cruz. Var pisces las detto los sientos. "
-    + "comovar pisces las detto los"));
-    this.allPosts.push(new Blogpost("Skidåkning e nice", this.placeholderUrl[4], "snow", this.admin, ["skidor", "snow"], "Skidor har sina fördelar och det kan vara kul att experimentera med både lorem ipsum alor doler meler set, comovar pisces las detto los sientos." 
-    + "Tape alfa desto sengo cruz. Var pisces las detto los sientos. "
-    + "comovar pisces las detto los"));
+    this.allPosts.push(new Blogpost("Nybörjar-grabs", this.placeholderUrl[5], "snow", this.admin, ["beginner", "grab"], "Lorem ipsum alor doler meler set, comovar pisces las detto los sientos."
+      + "Tape alfa desto sengo cruz. Var pisces las detto los sientos. "
+      + "comovar pisces las detto los"));
+    this.allPosts.push(new Blogpost("Vintersäsongen", this.placeholderUrl[6], "snow", this.testUser, ["vinter", "väder"], "Nu närmar sig vintersäsongen och jag har upptäckt att lorem ipsum alor doler meler set, comovar pisces las detto los sientos."
+      + "Tape alfa desto sengo cruz. Var pisces las detto los sientos. "
+      + "comovar pisces las detto los"));
+    this.allPosts.push(new Blogpost("Favorit-resort", this.placeholderUrl[7], "snow", this.testUser, ["disskusion", "resort"], "Dela med dig vilket resort du älskar! Lorem ipsum alor doler meler set, comovar pisces las detto los sientos."
+      + "Tape alfa desto sengo cruz. Var pisces las detto los sientos. "
+      + "comovar pisces las detto los"));
+    this.allPosts.push(new Blogpost("Skidåkning e nice", this.placeholderUrl[4], "snow", this.admin, ["skidor", "snow"], "Skidor har sina fördelar och det kan vara kul att experimentera med både lorem ipsum alor doler meler set, comovar pisces las detto los sientos."
+      + "Tape alfa desto sengo cruz. Var pisces las detto los sientos. "
+      + "comovar pisces las detto los"));
 
     for (let i = 0; i < this.allPosts.length; i++) {
       this.allPosts[i].id = i;
@@ -85,15 +85,11 @@ export class AllPostsService {
       if (this.allPosts[i].id === post.id) {
         let index = i;
         this.allPosts.splice(index, 1);
+        for (let y = index; y < this.allPosts.length; y++) {
+          this.allPosts[y].id --;
+        }
         this.storageService.setStorage('postsArr', this.allPosts);
       }
     }
   }
-
-  /**
-   * console.log(post);
-    let i = this.allPosts.indexOf(post);
-    this.allPosts.splice(i, 1);
-    this.storageService.setStorage('postsArr', this.allPosts);
-   */
 }

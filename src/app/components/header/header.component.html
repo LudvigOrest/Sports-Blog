@@ -20,7 +20,7 @@
         <!--Modal with log-in form-->
         <div *ngIf="using.username != 'guest'" id="log-in-item">
             <a [routerLink]="['/acc', using.username]">
-                <img alt="user"  src="./assets/img/login.png" id="user-logo">
+                <img alt="user" src="./assets/img/login.png" id="user-logo">
             </a>
             <a id="user-name" [routerLink]="['/acc', using.username]">{{using.username}}</a>
         </div>

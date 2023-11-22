@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Blogpost } from 'src/models/blogpost';
-import { User } from 'src/models/user';
+import { Blogpost } from 'src/modules/blogpost';
+import { User } from 'src/modules/user';
 import { ActivatedRoute } from '@angular/router';
 import { AllPostsService } from 'src/app/services/all-posts.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -18,7 +18,7 @@ export class BlogPostsComponent {
     private postService: AllPostsService,
     private storageService: StorageService,
     private userService: CurrentUserService
-    ) {}
+  ) { }
   @Input() _posts: Blogpost[] = [];
   @Input() _header: string = '';
 

@@ -23,6 +23,5 @@ export class User {
         } else {
             this.likedPosts.push(postId);
         }
-        
     }
 }

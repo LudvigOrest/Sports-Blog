@@ -26,20 +26,20 @@ export class Blogpost {
         this.creator = creator;
         this.tags = tags;
         this.text = text;
-        this.open = {likes : 0, dislikes : 0, comments: []}
+        this.open = { likes: 0, dislikes: 0, comments: [] }
     }
 
     //like-dislike functions should only work when user is logged in (check in service what user-type i.e guest or logged in)
     like(currentUser: CurrentUserService): void {
-        if (currentUser.currentUser.username != "guest" ) {
+        if (currentUser.currentUser.username != "guest") {
             console.log("liked post");
             //this.open.likes ++;
-        } else { 
+        } else {
             console.log("user is not logged in");
         }
     }
 
-    dislike(currentUser: CurrentUserService) : void {
+    dislike(currentUser: CurrentUserService): void {
         if (currentUser.currentUser.username != "guest") {
             console.log("disliked post");
             //this.likes --
