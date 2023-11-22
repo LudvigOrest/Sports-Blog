@@ -27,8 +27,6 @@ export class PostViewComponent {
     id: number = this.params.id;
     commentLiked: boolean[] = [];
 
-    
-
     get allPosts(): Blogpost[] {
       return this.storageService.getStorage('postsArr');
     }
@@ -47,52 +45,12 @@ export class PostViewComponent {
       return this.userService.currentUser;
     }
     
-    
-    //Like/Dislike checks if user has liked/disliked the post before, then limits the amounts of likes/dislikes by looking at this.liked/disliked boolean
-    //You can unlike/un-dislike by pressing the button one more time
-    //2nd 3rd if-statement handles if this post has been liked or not before
     like(): void {
       this.postInService.open.likes ++;
       this.storageService.setStorage('postsArr', this.postService.allPosts);
       let i = this.user.likedPosts.indexOf(this.id);
       this.user.likedPosts.splice(i, 1);
     }
-    
-    /**
-     * 
-      if (this.user.likedPosts.includes(this.id)) {
-        this.postInService.open.likes --;
-        let i = this.user.likedPosts.indexOf(this.id);
-        this.user.likedPosts.splice(i, 1);
-        this.liked = false;
-      } else if (this.user.likedPosts.includes(this.id) === false && this.liked === false){
-        this.postInService.open.likes ++;
-        this.user.likedPosts.push(this.id);
-        this.liked = true;
-      } else if (this.user.likedPosts.includes(this.id) === false && this.liked === true) {
-        this.postInService.open.likes --;
-        let i = this.user.likedPosts.indexOf(this.id);
-        this.user.likedPosts.splice(i, 1);
-        this.liked = false;
-      }
-      this.storageService.setStorage('postsArr', this.postService.allPosts);
-
-
-      checkIfLiked(): boolean {
-      if (this.user.likedPosts.includes(this.id)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-    checkIfDisliked(): boolean {
-      if (this.user.dislikedPosts.includes(this.id)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-     */
 
     dislike(): void {
       this.postInService.open.dislikes ++;

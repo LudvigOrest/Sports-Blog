@@ -41,8 +41,4 @@ export class HeaderComponent {
   clearLocalStorage(): void {
     this.allPostService.clearLocal();
   }
-
-  fillLocal() {
-    this.allPostService.fillLocal();
-  }
 }

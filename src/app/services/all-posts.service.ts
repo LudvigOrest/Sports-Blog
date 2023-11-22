@@ -33,6 +33,7 @@ export class AllPostsService {
 
   //Refer to allPosts in the views/components and filter from category. New posts should be added to this array as well
   allPosts: Blogpost[] = [];
+  viewing: number = 0;
 
   fillLocal(): void {
     this.allPosts.push(new Blogpost("Vert-skejtande", this.placeholderUrl[1], "skateboard", this.admin, ["vert", "tricks"], "Vad tänker du på när du hör vert? 90-gradiga ramper och tape alfa desto sengo cruz. Var pisces las detto los sientos. "));
@@ -80,8 +81,19 @@ export class AllPostsService {
 
   removePost(post: Blogpost): void {
     console.log(post);
+    for (let i = 0; i < this.allPosts.length; i++) {
+      if (this.allPosts[i].id === post.id) {
+        let index = i;
+        this.allPosts.splice(index, 1);
+        this.storageService.setStorage('postsArr', this.allPosts);
+      }
+    }
+  }
+
+  /**
+   * console.log(post);
     let i = this.allPosts.indexOf(post);
     this.allPosts.splice(i, 1);
     this.storageService.setStorage('postsArr', this.allPosts);
-  }
+   */
 }
